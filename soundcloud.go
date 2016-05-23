@@ -92,6 +92,8 @@ func (s *SoundcloudApi) Get(url string, p *UrlParams) (*http.Response, error) {
 	return s.do(req)
 }
 
+func (s *SoundcloudApi) SetMaxIdleConnectionsPerHost(int) err {}
+
 // Post Makes a post request to the speciefied url resource, data interface will be encoded into json
 func (s *SoundcloudApi) Post(url string, data interface{}) (*http.Response, error) {
 	url = buildUrl(url)
