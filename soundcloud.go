@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
-        "time"
 	"golang.org/x/oauth2"
 )
 
@@ -92,13 +91,12 @@ func (s *SoundcloudApi) Get(url string, p *UrlParams) (*http.Response, error) {
 	return s.do(req)
 }
 
-func (s *SoundcloudApi) SetMaxIdleConnectionsPerHost(x int, y time.Duration) error {
+func (s *SoundcloudApi) SetMaxIdleConnectionsPerHost(x int) error {
         transport, ok := s.httpClient.Transport.(*http.Transport)
 	if !ok {
 		return nil
 	}
 	transport.MaxIdleConnsPerHost = x
-        transport.TLSHandshakeTimeout = y
         transport.DisableKeepAlives = false
         return nil
 }
