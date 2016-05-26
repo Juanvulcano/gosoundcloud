@@ -92,7 +92,6 @@ func (s *SoundcloudApi) Get(url string, p *UrlParams) (*http.Response, error) {
 	return s.do(req)
 }
 
-<<<<<<< HEAD
 func (s *SoundcloudApi) SetMaxIdleConnectionsPerHost(x int, y time.Duration) error {
         transport, ok := s.httpClient.Transport.(*http.Transport)
 	if !ok {
@@ -110,9 +109,6 @@ func (s *SoundcloudApi) SetMaxIdleConnectionsPerHost(x int, y time.Duration) err
         //tr := &http.Transport{DisableKeepAlives: false, MaxIdleConnsPerHost:x} 
         //s.httpClient.Transport = tr
 //        }
-=======
-func (s *SoundcloudApi) SetMaxIdleConnectionsPerHost(int) err {}
->>>>>>> 34f2b3783e859b862f86564c5d095d21a070dcb8
 
 // Post Makes a post request to the speciefied url resource, data interface will be encoded into json
 func (s *SoundcloudApi) Post(url string, data interface{}) (*http.Response, error) {
