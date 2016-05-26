@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
-
+        "time"
 	"golang.org/x/oauth2"
 )
 
@@ -91,6 +91,24 @@ func (s *SoundcloudApi) Get(url string, p *UrlParams) (*http.Response, error) {
 
 	return s.do(req)
 }
+
+func (s *SoundcloudApi) SetMaxIdleConnectionsPerHost(x int, y time.Duration) error {
+        transport, ok := s.httpClient.Transport.(*http.Transport)
+	if !ok {
+		return nil
+	}
+	transport.MaxIdleConnsPerHost = x
+        transport.TLSHandshakeTimeout = y
+        transport.DisableKeepAlives = false
+        return nil
+}
+        //case Transport:
+	//	return Transport
+        //}
+        //tr := &http.Transport(*http.Transport)
+        //tr := &http.Transport{DisableKeepAlives: false, MaxIdleConnsPerHost:x} 
+        //s.httpClient.Transport = tr
+//        }
 
 // Post Makes a post request to the speciefied url resource, data interface will be encoded into json
 func (s *SoundcloudApi) Post(url string, data interface{}) (*http.Response, error) {
